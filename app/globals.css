@@ -100,34 +100,30 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
   min-width: 320px;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  max-width: 100%;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
 
 main,
 footer {
-  animation: page-enter 480ms cubic-bezier(.22, 1, .36, 1) both;
+  animation: page-enter 360ms cubic-bezier(.22, 1, .36, 1) both;
   transform-origin: center top;
-  transition: opacity 280ms ease, transform 280ms cubic-bezier(.4, 0, 1, 1), filter 280ms ease;
-}
-
-body.page-is-leaving main,
-body.page-is-leaving footer {
-  opacity: 0;
-  transform: translateY(18px) scale(.995);
-  filter: blur(2px);
 }
 
 @keyframes page-enter {
   from {
     opacity: 0;
-    transform: translateY(22px);
-    filter: blur(2px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
@@ -142,7 +138,7 @@ body.page-is-leaving footer {
 }
 
 @layer components {
-  .site-container { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .site-container { @apply mx-auto w-full min-w-0 max-w-7xl px-4 sm:px-6 lg:px-8; }
   .eyebrow { @apply text-xs font-black uppercase tracking-[.18em] text-orange; }
   .section-title { @apply mt-3 text-3xl font-black leading-tight tracking-[-.035em] text-navy sm:text-4xl; }
   .section-subtitle { @apply mt-4 max-w-2xl text-base leading-7 text-slate-500 sm:text-lg; }
@@ -161,6 +157,52 @@ h1, h2, h3, h4, h5, h6, strong,
 .font-semibold, .font-bold, .font-extrabold, .font-black {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
+}
+
+@media (max-width: 639px) {
+  main,
+  footer,
+  section {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .site-container {
+    padding-inline: clamp(1rem, 5vw, 1.25rem);
+    text-align: center;
+  }
+
+  main .site-container :where(.section-subtitle, [class*="max-w-"]) {
+    margin-inline: auto;
+  }
+
+  main .site-container article,
+  main .site-container iframe,
+  main .site-container > .grid > a {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  main .site-container article > span:first-child,
+  main .site-container article > a > span:first-child {
+    margin-inline: auto;
+  }
+
+  main .site-container ul {
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    text-align: left;
+  }
+
+  main .site-container .mobile-center-row {
+    justify-content: center;
+  }
+
+  .footer-link {
+    justify-content: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
