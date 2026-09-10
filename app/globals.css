@@ -221,6 +221,15 @@ h1, h2, h3, h4, h5, h6, strong,
   max-width: min(480px, calc(100vw - 110px)) !important;
 }
 
+/* A EzeSoft altera o flex-direction conforme o estado do chat.
+   O acionador precisa ficar independente desse layout dinâmico. */
+#EZchatWidget > div:first-child {
+  position: fixed !important;
+  right: max(25px, env(safe-area-inset-right)) !important;
+  bottom: max(25px, env(safe-area-inset-bottom)) !important;
+  left: auto !important;
+}
+
 @media (max-width: 639px) {
   #EZchatWidget {
     gap: 8px !important;
@@ -232,5 +241,10 @@ h1, h2, h3, h4, h5, h6, strong,
     width: calc(100vw - 88px) !important;
     max-width: calc(100vw - 88px) !important;
     height: min(630px, calc(100dvh - 88px)) !important;
+  }
+
+  #EZchatWidget > div:first-child {
+    right: max(12px, env(safe-area-inset-right)) !important;
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
   }
 }
