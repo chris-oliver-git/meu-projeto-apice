@@ -75,6 +75,7 @@ Diretrizes principais:
 - separação entre conteúdo institucional, assistencial e canais de contato;
 - revisão dos menus e validação individual das rotas;
 - inclusão do crédito “Desenvolvido por Íon Digital” no rodapé.
+- fotografia principal real e licenciada, selecionada no banco de imagens Pexels.
 
 ## Tecnologias
 
