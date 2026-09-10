@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,13 +31,13 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="antialiased">
         {children}
-        <Script
+        <script
           type="application/javascript"
           src="https://ezchatbot.ai/webchat/index.umd.js"
           className="EzWebchat"
           id="9d8959f6-bb63-4d0c-89f8-dc6432cd5d51.a160ade2-8f3b-4d05-aaad-b586bbff17a0"
-          strategy="afterInteractive"
           referrerPolicy="strict-origin-when-cross-origin"
+          defer
         />
       </body>
     </html>
