@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { EzChatHint } from "@/components/ez-chat-hint";
 
 export const metadata: Metadata = {
   title: { default: "Ápice Saúde | Cuidado completo e integrado", template: "%s | Ápice Saúde" },
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="antialiased">
         {children}
+        <EzChatHint />
         <script
           type="application/javascript"
           src="https://ezchatbot.ai/webchat/index.umd.js"

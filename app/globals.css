@@ -227,6 +227,33 @@ h1, h2, h3, h4, h5, h6, strong,
   height: min(630px, calc(100dvh - 130px)) !important;
 }
 
+/* A EzeSoft sinaliza o estado fechado usando width="0" no iframe.
+   Não sobrescrever esse estado evita o painel vazio e sua sombra na página. */
+#EZchatWidget iframe[title="mainFrame"][width="0"] {
+  width: 0 !important;
+  max-width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  box-shadow: none !important;
+}
+
+/* Controle externo para fechar o atendimento, inclusive no modo móvel em tela cheia. */
+.ez-chat-close {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  top: max(16px, env(safe-area-inset-top));
+  z-index: 100000000001;
+}
+
+@media (min-width: 801px) and (min-height: 769px) {
+  .ez-chat-close {
+    right: max(37px, env(safe-area-inset-right));
+    top: max(20px, calc(100dvh - 723px));
+  }
+}
+
 /* A EzeSoft altera o flex-direction conforme o estado do chat.
    O acionador precisa ficar independente desse layout dinâmico. */
 #EZchatWidget > div:first-child {
