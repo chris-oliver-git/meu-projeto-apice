@@ -153,6 +153,18 @@ footer {
 
 a, button { transition-duration: 300ms; }
 
+/* Evita que o atendimento flutuante cubra o anúncio inicial. */
+body.apice-promo-open #EZchatWidget,
+body.apice-promo-open .ez-chat-hint {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.home-promo-dialog {
+  z-index: 2147483647 !important;
+}
+
 h1, h2, h3, h4, h5, h6, strong,
 .font-semibold, .font-bold, .font-extrabold, .font-black {
   font-family: Arial, Helvetica, sans-serif;

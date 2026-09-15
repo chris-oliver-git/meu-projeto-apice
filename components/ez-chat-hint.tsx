@@ -41,6 +41,7 @@ export function EzChatHint() {
       setVisible(false);
       setChatOpen(true);
     };
+    const hideWhenPromoOpens = () => setVisible(false);
     const showWhenChatCloses = () => setChatOpen(false);
     const observer = new MutationObserver(syncChatState);
 
@@ -53,6 +54,7 @@ export function EzChatHint() {
 
     window.addEventListener("apice:ezchat-opened", hideWhenChatOpens);
     window.addEventListener("apice:ezchat-closed", showWhenChatCloses);
+    window.addEventListener("apice:promo-opened", hideWhenPromoOpens);
     syncChatState();
 
     return () => {
@@ -60,6 +62,7 @@ export function EzChatHint() {
       observer.disconnect();
       window.removeEventListener("apice:ezchat-opened", hideWhenChatOpens);
       window.removeEventListener("apice:ezchat-closed", showWhenChatCloses);
+      window.removeEventListener("apice:promo-opened", hideWhenPromoOpens);
       host?.remove();
     };
   }, []);
@@ -103,7 +106,7 @@ export function EzChatHint() {
       <aside
         aria-live="polite"
         aria-label="Atalho para agendamento"
-        className={`fixed bottom-[36px] right-[104px] z-[2147483646] max-w-[260px] transition-all duration-500 ease-out max-sm:bottom-[88px] max-sm:right-3 max-sm:max-w-[calc(100vw-24px)] ${
+        className={`ez-chat-hint fixed bottom-[36px] right-[104px] z-[2147483646] max-w-[260px] transition-all duration-500 ease-out max-sm:bottom-[88px] max-sm:right-3 max-sm:max-w-[calc(100vw-24px)] ${
           visible
             ? "translate-y-0 opacity-100"
             : "pointer-events-none translate-y-3 opacity-0"
