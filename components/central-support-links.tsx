@@ -43,11 +43,6 @@ export function CentralSupportLinks() {
         <ArrowRight className="size-4" aria-hidden="true" />
       </button>
 
-      <Link href="/consultas" className={linkClass}>
-        <span>Especialidades que atendemos</span>
-        <ArrowRight className="size-4" aria-hidden="true" />
-      </Link>
-
       <Link href="/exames" className={linkClass}>
         <span>Informações sobre exames</span>
         <ArrowRight className="size-4" aria-hidden="true" />
