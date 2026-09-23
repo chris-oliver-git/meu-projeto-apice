@@ -24,9 +24,9 @@ const pages: Record<string, PageDef> = {
   resultados: { title: "Resultados de exames", subtitle: "Acesse seus resultados laboratoriais com segurança pelo portal de laudos.", eyebrow: "Área do paciente" },
 };
 
-const specialties = ["Alergologia", "Angiologia", "Cardiologia", "Cirurgia plástica", "Clínica médica", "Dermatologia", "Endocrinologia", "Gastroenterologia", "Ginecologia", "Neurologia", "Nutrição", "Oftalmologia", "Ortopedia e traumatologia", "Pediatria", "Pneumologia", "Proctologia", "Psiquiatria"];
+const specialties = ["Alergologia", "Angiologia", "Cardiologia", "Cirurgia plástica", "Clínica médica", "Dermatologia", "Endocrinologia", "Gastroenterologia", "Ginecologia", "Neurologia", "Nutrição", "Oftalmologia", "Ortopedia e traumatologia", "Pediatria", "Pneumologia"];
 const exams = ["Audiometria", "BERA", "Bioimpedância", "Colonoscopia", "Colposcopia", "Densitometria óssea", "Doppler", "Ecocardiografia", "Eletrocardiograma", "Eletroencefalograma", "Endoscopia digestiva", "Exames laboratoriais", "Histeroscopia", "Holter", "M.A.P.A.", "Mamografia digital", "Prova de função pulmonar", "Raio-X digital", "Teste Ergométrico", "Tomografia", "Ultrassonografia"];
-const doctors = [["Dra. Luciana Saraiva", "Dermatologia", "CRM 52-7601-53 · RQE 18344"], ["Dr. André Caldara", "Oftalmologia · Direção hospitalar", "CRM 52-90335-3 · RQE 22140"], ["Dra. Fernanda Saraiva", "Gastroenterologia", "CRM 52-8394-8 · RQE 40735"], ["Dra. Norma Ferreira", "Pneumologia", "CRM 52-48942-7"], ["Dra. Fransy Serret", "Ginecologista", "CRM 521231049"], ["Dra. Paula Marinho", "Ultrassonografia", "CRM 52806676"]];
+const doctors = [["Dra. Luciana Saraiva", "Dermatologia", "CRM 52-7601-53 · RQE 18344"], ["Dr. André Caldara", "Oftalmologia · Direção hospitalar", "CRM 52-90335-3 · RQE 22140"], ["Dra. Fernanda Saraiva", "Gastroenterologia", "CRM 52-8394-8 · RQE 40735"], ["Dr. Leonardo Tadeu Silva do Carmo", "Ortopedia", "CRM 52977578 · RQE 47845"], ["Dr. Luiz Paulo Vidal Rocha", "Cardiologia", "CRM 52374508 · RQE 4321"], ["Dr. Carlos Muylaert Torrico", "Alergologia", "CRM 52608967 · RQE 26890"]];
 const units = [
   {
     name: "Duque de Caxias",
