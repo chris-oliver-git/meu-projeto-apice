@@ -1,86 +1,77 @@
-# Ápice Saúde — Portal Institucional
+# Ápice Saúde — Portal institucional e atendimento digital
 
-Modernização do portal digital da **Ápice Saúde**, criada para transmitir a solidez, o acolhimento e a capacidade assistencial de uma instituição de saúde de grande porte.
+Modernização da presença digital da Ápice Saúde, conectando informações assistenciais, identidade institucional e acesso ao atendimento em uma experiência responsiva.
 
-**Site publicado:** [apice-saude-modern.chris-lacerda.chatgpt.site](https://apice-saude-modern.chris-lacerda.chatgpt.site)
+**Site:** [apicesaude.com.br](https://apicesaude.com.br)  
+**Ambiente de validação:** [Prévia do projeto](https://apice-saude-modern.chris-lacerda.chatgpt.site)
 
-## Visão do projeto
+## Propósito
 
-O projeto reorganiza a presença digital da Ápice Saúde para tornar informações importantes mais fáceis de localizar e transformar o site em um ponto de orientação para pacientes, familiares, profissionais e empresas.
+Facilitar a jornada de pacientes e familiares: conhecer serviços, localizar unidades, consultar o corpo clínico, acessar resultados e iniciar uma solicitação de agendamento. O atendimento pelo site complementa os canais de telefone e WhatsApp.
 
-A experiência equilibra três objetivos:
+## Entregas do projeto
 
-- fortalecer a confiança na marca;
-- facilitar o acesso a serviços, unidades e resultados;
-- apresentar a instituição com uma linguagem clara, humana e profissional.
+- Reorganização da arquitetura de informação e modernização visual com base na identidade Ápice e no aprendizado do design system do Cartão AMAS.
+- Interface responsiva, com navegação adaptada a celulares, tablets e computadores.
+- Integração do widget EzeSoft/EzWebchat, com botão flutuante, mensagem de convite e controles de abertura e fechamento.
+- Abertura do chat pelo botão “Agendar uma consulta” da central de atendimento e pelo banner promocional da home.
+- Banner com imagem, botão de fechar e chamada “Quero agendar meu atendimento”.
+- Página de unidades com endereços, horários, mapas e galeria automática de nove fotos, ampliáveis sem cortes.
+- Acesso ao portal externo de resultados RealClinic.
+- Atualização de profissionais, serviços e apresentação resumida dos planos AMAS.
+- Rodapé com símbolos das redes sociais, links externos e crédito à Íon Digital.
 
-## Públicos atendidos
+## Organização do portal
 
-- Pacientes que procuram consultas, exames, terapias e cirurgias.
-- Familiares que precisam conhecer unidades e canais de atendimento.
-- Profissionais interessados no corpo clínico e na estrutura assistencial.
-- Empresas que buscam soluções de saúde para seus colaboradores.
-
-## Principais jornadas
-
-| Necessidade | Caminho oferecido pelo portal |
+| Página | Finalidade |
 | --- | --- |
-| Conhecer os atendimentos | Serviços → Consultas, Exames, Terapias ou Cirurgias |
-| Localizar atendimento | Unidades → endereço, horário, mapa e contato |
-| Consultar especialistas | Corpo clínico |
-| Acessar informações de exames | Resultados |
-| Conhecer a organização | Institucional |
-| Falar com a Ápice | Contato |
+| Início | Apresentação, campanha e acessos prioritários |
+| Serviços | Organização das linhas de cuidado |
+| Consultas | Apresentação e orientação para atendimento, sem catálogo de especialidades |
+| Exames | Catálogo de exames e contato |
+| Terapias | Fisioterapia, Fonoaudiologia, Psicologia e Nutrição |
+| Cirurgias | Apresentação de áreas de procedimentos |
+| Unidades | Localização, horários, mapas e galeria |
+| Corpo clínico | Profissionais, especialidades e registros informados |
+| Planos | Amas Prático, Amas Bem-Estar e Amas Família Plus, nessa ordem |
+| Institucional | História, valores, Trabalhe Conosco e Ouvidoria |
+| Para empresas | Apresentação de serviços corporativos |
+| Resultados | Direcionamento ao portal RealClinic |
+| Contato | Canais de relacionamento |
 
-## Organização do site
+## Regras e limites
 
-- **Início:** apresenta a proposta de valor e oferece acesso às jornadas prioritárias.
-- **Serviços:** organiza as linhas de cuidado em categorias fáceis de compreender.
-- **Unidades:** reúne somente unidades próprias da Ápice, com dados práticos de atendimento.
-- **Corpo clínico:** valoriza os profissionais e facilita a busca por especialidades.
-- **Institucional:** comunica história, propósito e posicionamento da organização.
-- **Para empresas:** apresenta oportunidades de relacionamento corporativo.
-- **Resultados:** direciona o paciente ao acesso de informações assistenciais.
-- **Contato:** concentra os canais institucionais, inclusive a Ouvidoria.
+- Planos permanece disponível por acesso específico, sem item no menu principal ou no rodapé. Valores e condições completos são consultados no site do Cartão AMAS.
+- O card da central na home não exibe mais “Especialidades que atendemos”.
+- A página de Unidades não inclui o parceiro SEMERJ.
+- A Ouvidoria está presente em Institucional e Contato, sem atalho próprio na home.
+- O chat é uma integração de atendimento de terceiro. A confirmação de horários e agendamentos depende do fluxo e da disponibilidade do serviço; o portal não implementa uma agenda clínica própria.
+- Resultados são acessados em ambiente externo. Este projeto não implementa armazenamento próprio de prontuários ou laudos.
+- Informações assistenciais, campanhas, profissionais, horários e contatos precisam de validação da instituição.
+- A configuração de não indexação está presente no código. Ela não equivale a controle de acesso privado.
 
-## Regras de negócio
+## Identidade e implementação
 
-- A navegação principal prioriza ações relevantes para pacientes e não exibe a opção “Planos”.
-- A Ouvidoria fica concentrada na página de Contato e não aparece como atalho na página inicial.
-- A página de Unidades apresenta apenas estruturas próprias da Ápice Saúde.
-- Informações do parceiro SEMERJ não fazem parte deste portal.
-- Resultados recebe destaque como ação principal do cabeçalho.
-- Telefones, horários, endereços e dados assistenciais devem ser validados antes de cada publicação.
+Azul institucional `#0F286F`, laranja `#FD4903`, tipografia Arial e componentes reutilizáveis orientam a consistência visual.
 
-## Identidade e experiência
+**Tecnologias:** TypeScript, React, Next.js/Vinext, Tailwind CSS, componentes Radix/shadcn e ícones Lucide, com símbolos de marcas em SVG.
 
-O visual foi desenvolvido a partir do manual oficial da marca Ápice e do aprendizado adquirido no design system do Cartão AMAS. A interface utiliza azul institucional para transmitir segurança, laranja para ações e destaques, amplos espaços em branco e componentes com leitura simples.
+O código-fonte é versionado no GitHub. O ambiente de validação utiliza Sites; para a hospedagem por FTP foi gerada uma exportação estática separada, com HTML, CSS, JavaScript e imagens. A configuração padrão deste repositório não deve ser confundida com o pacote estático pronto para upload.
 
-Diretrizes principais:
+## Condução e aprendizado
 
-- tipografia Arial, conforme a orientação da marca para aplicações digitais;
-- azul Ápice `#0F286F` e laranja Ápice `#FD4903` como cores centrais;
-- logotipo horizontal sobre fundos claros e versão reversa sobre fundos escuros;
-- contraste, hierarquia visual e comportamento responsivo;
-- botões com textos objetivos e áreas de clique confortáveis;
-- linguagem acolhedora, direta e sem excesso de termos técnicos.
+Projeto conduzido por **Christopher Lacerda**, com crédito de desenvolvimento à **Íon Digital**. O trabalho envolveu definição e refinamento de requisitos, organização das jornadas, implementação da interface, integração de atendimento, revisão de conteúdo e acompanhamento da publicação.
 
-## Evolução realizada
+O projeto demonstra a conexão entre necessidades do negócio, experiência do paciente e execução técnica. Entre os aprendizados estão a gestão de dependências externas, o comportamento de componentes em dispositivos móveis e a separação entre código-fonte, ambiente de validação e distribuição para hospedagem.
 
-- modernização completa do layout e da arquitetura de informação;
-- adequação de cores, tipografia e aplicação das marcas oficiais;
-- criação de jornadas específicas para serviços e unidades;
-- navegação responsiva para computador, tablet e celular;
-- transições suaves e perceptíveis entre as páginas;
-- separação entre conteúdo institucional, assistencial e canais de contato;
-- revisão dos menus e validação individual das rotas;
-- inclusão do crédito “Desenvolvido por Íon Digital” no rodapé.
-- fotografia principal real e licenciada, selecionada no banco de imagens Pexels.
+As entregas são funcionais; não há métricas documentadas que comprovem aumento de conversão ou redução do tempo de atendimento.
 
-## Tecnologias
+## Pontos de manutenção
 
-Interface desenvolvida com **TypeScript, React, Next.js/Vinext e Tailwind CSS**, com componentes reutilizáveis e estrutura preparada para evolução contínua.
+- Unificar o contato de recrutamento: Institucional utiliza `trabalheconosco@apicesaude.com.br`, enquanto Contato ainda utiliza `rh@apicesaude.com.br`.
+- Validar a mensagem “mais de 25 especialidades” ainda presente na home e em Serviços.
+- Manter a configuração da hospedagem que está funcionando; regras de servidor precisam ser compatíveis com o provedor.
 
-## Autoria
+---
 
-Projeto de modernização, arquitetura, experiência e desenvolvimento digital por **Íon Digital**.
+**Desenvolvido por Íon Digital.**
