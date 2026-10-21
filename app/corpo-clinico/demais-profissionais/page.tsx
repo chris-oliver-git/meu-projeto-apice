@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { ProfessionalDirectory } from "@/components/professional-directory";
+export default function OtherProfessionalsPage() {
+ return <div className="flex min-h-screen flex-col bg-page text-slate-700"><SiteHeader/><main className="flex-1"><section className="bg-navy py-14 text-white sm:py-20"><div className="site-container"><nav aria-label="Navegação estrutural" className="mb-6 flex flex-wrap gap-2 text-sm text-blue-100"><Link href="/">Início</Link><span aria-hidden="true">/</span><Link href="/corpo-clinico">Corpo Clínico</Link><span aria-hidden="true">/</span><span>Demais profissionais</span></nav><p className="text-xs font-bold uppercase tracking-widest text-orange">Corpo Clínico</p><h1 className="mt-3 text-3xl font-black sm:text-5xl">Demais profissionais</h1><p className="mt-5 max-w-2xl leading-7 text-blue-100">Conheça os médicos e profissionais que integram nossa equipe de cuidado. Consulte seus registros e áreas de atendimento.</p></div></section><section className="py-10 sm:py-16"><div className="site-container"><ProfessionalDirectory/><p className="mt-8 text-sm leading-6 text-slate-500">A disponibilidade de atendimento varia conforme a unidade. Confirme com nossa central antes de agendar.</p><Link href="/corpo-clinico" className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-xl bg-navy px-5 font-bold text-white"><ArrowLeft className="size-4"/>Voltar ao Corpo Clínico</Link></div></section></main><SiteFooter/></div>;
+}
