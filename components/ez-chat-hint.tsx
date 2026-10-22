@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { CalendarDays, X } from "lucide-react";
+import { openSchedulingChat, closeSchedulingChat, isSchedulingChatOpen } from "@/lib/ezchat";
 
 export function EzChatHint() {
   const [visible, setVisible] = useState(false);
@@ -11,10 +12,16 @@ export function EzChatHint() {
 
   useEffect(() => {
     let host: HTMLDivElement | null = null;
+    let observedWidget: Element | null = null;
     const timer = window.setTimeout(() => setVisible(true), 900);
     const ensureCloseHost = () => {
-      const widget = document.getElementById("EZchatWidget");
+      const widget = document.querySelector("ez-webchat, #EZchatWidget");
       if (!widget) return;
+      if (observedWidget !== widget) {
+        resizeObserver.disconnect();
+        resizeObserver.observe(widget);
+        observedWidget = widget;
+      }
 
       if (!host) {
         host = document.createElement("div");
@@ -31,11 +38,16 @@ export function EzChatHint() {
     };
     const syncChatState = () => {
       ensureCloseHost();
-      const frame = document.querySelector<HTMLIFrameElement>(
-        '#EZchatWidget iframe[title="mainFrame"]',
-      );
+      const opened = isSchedulingChatOpen();
+      setChatOpen(opened);
+      if (opened) setVisible(false);
+      const widget = document.querySelector('ez-webchat');
+      if (host && widget && opened) {
+        const box = widget.getBoundingClientRect();
+        host.style.setProperty('--apice-chat-close-top', `${Math.max(8, box.top + 8)}px`);
+        host.style.setProperty('--apice-chat-close-right', `${Math.max(8, window.innerWidth - box.right + 8)}px`);
+      }
 
-      setChatOpen(Boolean(frame && frame.getAttribute("width") !== "0"));
     };
     const hideWhenChatOpens = () => {
       setVisible(false);
@@ -43,11 +55,12 @@ export function EzChatHint() {
     };
     const hideWhenPromoOpens = () => setVisible(false);
     const showWhenChatCloses = () => setChatOpen(false);
+    const resizeObserver = new ResizeObserver(syncChatState);
     const observer = new MutationObserver(syncChatState);
 
     observer.observe(document.body, {
       attributes: true,
-      attributeFilter: ["height", "style", "width"],
+      attributeFilter: ["height", "width", "data-open", "data-fullscreen", "hidden"],
       childList: true,
       subtree: true,
     });
@@ -55,11 +68,14 @@ export function EzChatHint() {
     window.addEventListener("apice:ezchat-opened", hideWhenChatOpens);
     window.addEventListener("apice:ezchat-closed", showWhenChatCloses);
     window.addEventListener("apice:promo-opened", hideWhenPromoOpens);
+    window.addEventListener("resize", syncChatState);
     syncChatState();
 
     return () => {
       window.clearTimeout(timer);
       observer.disconnect();
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", syncChatState);
       window.removeEventListener("apice:ezchat-opened", hideWhenChatOpens);
       window.removeEventListener("apice:ezchat-closed", showWhenChatCloses);
       window.removeEventListener("apice:promo-opened", hideWhenPromoOpens);
@@ -71,35 +87,8 @@ export function EzChatHint() {
     setVisible(false);
   }
 
-  function openChat() {
-    const chatButton = document.querySelector<HTMLButtonElement>(
-      '#EZchatWidget button[data-testid="bubbleBtn"]',
-    );
-
-    if (chatButton) {
-      chatButton.click();
-      window.dispatchEvent(new Event("apice:ezchat-opened"));
-    }
-  }
-
-  function closeChat() {
-    const ezChat = (
-      window as Window & { ezchat?: { close?: () => void } }
-    ).ezchat;
-
-    if (ezChat?.close) {
-      ezChat.close();
-    } else {
-      document
-        .querySelector<HTMLButtonElement>(
-          '#EZchatWidget button[data-testid="bubbleBtn"]',
-        )
-        ?.click();
-    }
-
-    setChatOpen(false);
-    window.dispatchEvent(new Event("apice:ezchat-closed"));
-  }
+  function openChat() { void openSchedulingChat(); }
+  function closeChat() { closeSchedulingChat(); setChatOpen(false); }
 
   return (
     <>

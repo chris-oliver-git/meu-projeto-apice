@@ -10,7 +10,7 @@ const csp = values.get('content-security-policy');
 for (const directive of ["base-uri 'none'", "object-src 'none'", "frame-ancestors 'none'", "script-src-attr 'none'", "upgrade-insecure-requests"]) assert(csp.includes(directive), directive);
 assert(!csp.includes("'unsafe-eval'"));
 const scripts = csp.split(';').find(d => d.trim().startsWith('script-src '));
-assert(scripts.includes('https://ezchatbot.ai/webchat/index.umd.js'));
+assert(scripts.includes('https://ezchatbot.ai/webchat/'));
 assert(!scripts.includes('https://*.'));
 assert.equal(values.get('x-content-type-options'),'nosniff');
 assert.equal(values.get('x-frame-options'),'DENY');

@@ -11,8 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-const CHAT_BUTTON_SELECTOR =
-  '#EZchatWidget button[data-testid="bubbleBtn"]';
+import { openSchedulingChat as openChat } from "@/lib/ezchat";
 
 export function HomePromoModal() {
   const [open, setOpen] = useState(false);
@@ -34,22 +33,7 @@ export function HomePromoModal() {
   function openSchedulingChat() {
     setOpen(false);
 
-    let attempts = 0;
-    const tryToOpenChat = () => {
-      attempts += 1;
-      const chatButton =
-        document.querySelector<HTMLButtonElement>(CHAT_BUTTON_SELECTOR);
-
-      if (chatButton) {
-        chatButton.click();
-        window.dispatchEvent(new Event("apice:ezchat-opened"));
-        return;
-      }
-
-      if (attempts < 12) window.setTimeout(tryToOpenChat, 250);
-    };
-
-    window.setTimeout(tryToOpenChat, 250);
+    window.setTimeout(() => { void openChat(); }, 250);
   }
 
   return (

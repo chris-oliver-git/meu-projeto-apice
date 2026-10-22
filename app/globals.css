@@ -295,3 +295,39 @@ h1, h2, h3, h4, h5, h6, strong,
     bottom: max(12px, env(safe-area-inset-bottom)) !important;
   }
 }
+
+/* EzeSoft v1 usa <ez-webchat> com Shadow DOM, não o iframe antigo.
+   O modo fullscreen do fornecedor também é ativado por altura <= 768px.
+   Limitamos o host: o painel interno usa 100% desse espaço, sem cobrir o site. */
+ez-webchat {
+  position: fixed !important;
+  inset: auto max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) auto !important;
+  --ez-panel-w: min(420px, calc(100vw - 40px)) !important;
+  --ez-panel-h: min(600px, calc(100dvh - 140px)) !important;
+  max-width: calc(100% - 40px) !important;
+  max-height: calc(100dvh - 40px) !important;
+  z-index: 2147483647 !important;
+}
+ez-webchat[data-fullscreen] {
+  width: min(420px, calc(100% - 40px)) !important;
+  height: min(600px, calc(100dvh - 40px)) !important;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgb(15 40 111 / 22%);
+}
+body.apice-promo-open ez-webchat { visibility: hidden !important; pointer-events: none !important; }
+body:has(ez-webchat[data-open]) .ez-chat-close {
+  top: var(--apice-chat-close-top, 20px);
+  right: var(--apice-chat-close-right, 28px);
+}
+@media (max-width: 639px) {
+  ez-webchat {
+    inset: auto max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) auto !important;
+    max-width: calc(100% - 24px) !important;
+    max-height: calc(100dvh - 24px) !important;
+  }
+  ez-webchat[data-fullscreen] {
+    width: min(420px, calc(100% - 24px)) !important;
+    height: min(600px, calc(100dvh - 24px)) !important;
+  }
+}
