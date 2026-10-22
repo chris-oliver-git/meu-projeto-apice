@@ -493,6 +493,7 @@ export const professionals = [
   },
   {
     "name": "Norma Ferreira Marschhausen",
+    "cardSpecialty": "Medicina Física e Reabilitação",
     "council": "CRM",
     "registration": "52489427",
     "area": "Pneumologia",

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { CalendarDays, X } from "lucide-react";
-import { openSchedulingChat, closeSchedulingChat, isSchedulingChatOpen } from "@/lib/ezchat";
+import { openSchedulingChat, closeSchedulingChat, isSchedulingChatOpen, configureSchedulingChatIcon } from "@/lib/ezchat";
 
 export function EzChatHint() {
   const [visible, setVisible] = useState(false);
@@ -21,6 +21,7 @@ export function EzChatHint() {
         resizeObserver.disconnect();
         resizeObserver.observe(widget);
         observedWidget = widget;
+        configureSchedulingChatIcon();
       }
 
       if (!host) {

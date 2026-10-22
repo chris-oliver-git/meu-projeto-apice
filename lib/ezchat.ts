@@ -1,4 +1,4 @@
-type EzChatApi = { open?: () => void; close?: () => void };
+type EzChatApi = { open?: () => void; close?: () => void; set?: (key: string, value: unknown) => void };
 
 function api(): EzChatApi | undefined {
   return (window as Window & { ezchat?: EzChatApi }).ezchat;
@@ -33,4 +33,9 @@ export function closeSchedulingChat(): void {
   if (api()?.close) api()!.close!();
   else if (isSchedulingChatOpen()) document.querySelector<HTMLButtonElement>('#EZchatWidget button[data-testid="bubbleBtn"]')?.click();
   window.dispatchEvent(new Event('apice:ezchat-closed'));
+}
+
+// Preserve the provider logo and all service settings; fill its circular launcher.
+export function configureSchedulingChatIcon(): void {
+  if (document.querySelector('ez-webchat')) api()?.set?.('iconFullSize', true);
 }
